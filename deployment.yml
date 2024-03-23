@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vad-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vad-app
+  template:
+    metadata:
+      labels:
+        app: vad-app
+    spec:
+      containers:
+      - name: vad-app
+        image: qdldocker/vad_app_amd64:latest
+        volumeMounts:
+        - name: tls-volume
+          mountPath: "/etc/tls"
+          readOnly: true
+        ports:
+          - containerPort: 443
+      volumes:
+      - name: tls-volume
+        secret:
+          secretName: my-tls-secret

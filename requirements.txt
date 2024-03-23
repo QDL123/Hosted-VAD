@@ -1,0 +1,10 @@
+websockets
+fastapi
+numpy
+torch
+torchaudio
+onnxruntime
+pydub
+audiosegment
+resampy
+uvicorn
